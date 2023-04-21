@@ -34,29 +34,19 @@ test = pd.merge(df_test, df_test2, how='inner', on='ID').fillna('')
 (train['Class'].value_counts(sort=False) / train.shape[0]).plot(kind='bar')
 plt.plot()
 
-
-np.array(stopwords.words('english'))
-
 stop_words = set(stopwords.words('english'))
 
 def preprocessing(text):
     global stop_words
     text = text.lower()
     text = text.translate(str.maketrans('', '', string.punctuation))
-    
-#     word_tokens = word_tokenize(text)
-    
-#     return ' '.join([w for w in word_tokens if not w in stop_words])
+   
     return text
-
-preprocessing(train['Text'].loc[0])[:1000]
 
 tfidf = TfidfVectorizer(min_df=1, ngram_range=(1, 2), max_features=500)
 
 text_train = tfidf.fit_transform(train['Text'].values).toarray()
 text_test = tfidf.transform(test['Text'].values).toarray()
-
-text_train.shape
 
 train2 = pd.DataFrame(text_train, index=train.index)  
 test2 = pd.DataFrame(text_test, index=test.index)
@@ -90,10 +80,6 @@ truncated_test.index = ind
 train = train.join(truncated_train)
 test = test.join(truncated_test)
 
-train.shape, test.shape
-
-
-
 X = train.drop('Class', axis=1)
 Y = train['Class'].values - 1
 
@@ -103,8 +89,6 @@ X_test = test.drop('Class', axis=1)
 X_train, Y_train = X.copy(), Y.copy()
 
 matrix_test = xgb.DMatrix(X_test)
-
-#pickle.dump(xgb_classifier, open('model.pkl', 'wb'))
 
 pickled_model = pickle.load(open(r'C:\Users\r.zhanabai\Documents\project\model.pkl', 'rb'))
 
