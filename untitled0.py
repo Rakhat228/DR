@@ -2,16 +2,16 @@ import numpy as np
 import pandas as pd
 #from sklearn.feature_extraction.text import TfidfVectorizer
 #from nltk.corpus import stopwords
-from sklearn.decomposition import TruncatedSVD
+#from sklearn.decomposition import TruncatedSVD
 import xgboost as xgb
 import pickle
 import string
 
 import matplotlib.pyplot as plt
 import seaborn as sns
-sns.set()
+#sns.set()
 import streamlit as st
-from io import StringIO
+#from io import StringIO
 
 
 df_train = pd.read_csv(r'C:/Users/r.zhanabai/Documents/project/training_text.zip', engine='python', sep='\|\|', skiprows=1, names=["ID", "Text"]).set_index('ID')
