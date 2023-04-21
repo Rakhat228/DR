@@ -7,8 +7,8 @@ import pandas as pd
 import pickle
 import string
 
-import matplotlib.pyplot as plt
-import seaborn as sns
+#import matplotlib.pyplot as plt
+#import seaborn as sns
 #sns.set()
 import streamlit as st
 #from io import StringIO
