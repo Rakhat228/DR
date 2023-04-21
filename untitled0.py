@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from sklearn.feature_extraction.text import TfidfVectorizer
+#from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.corpus import stopwords
 from sklearn.decomposition import TruncatedSVD
 import xgboost as xgb
@@ -57,12 +57,6 @@ truncated_train = pd.DataFrame(svd_truncated.fit_transform(train2))
 truncated_test = pd.DataFrame(svd_truncated.transform(test2))
 
 truncated_train.columns = truncated_test.columns = [f'component №{i}' for i in range(1, n_components + 1)]
-
-# truncated_train.index = train.index
-# truncated_test.index = test.index
-
-truncated_train.head()
-
 
 all_data = pd.concat([train, test]).reset_index(drop=True)
 all_data = pd.get_dummies(all_data, columns=['Gene', 'Variation'], drop_first=True)
