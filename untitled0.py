@@ -3,7 +3,7 @@ import pandas as pd
 #from sklearn.feature_extraction.text import TfidfVectorizer
 #from nltk.corpus import stopwords
 #from sklearn.decomposition import TruncatedSVD
-import xgboost as xgb
+import xgboost
 import pickle
 import string
 
@@ -82,7 +82,7 @@ X_test = test.drop('Class', axis=1)
 
 X_train, Y_train = X.copy(), Y.copy()
 
-matrix_test = xgb.DMatrix(X_test)
+matrix_test = xgboost.DMatrix(X_test)
 
 pickled_model = pickle.load(open(r'C:\Users\r.zhanabai\Documents\project\model.pkl', 'rb'))
 
