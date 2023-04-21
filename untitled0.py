@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 #from sklearn.feature_extraction.text import TfidfVectorizer
-from nltk.corpus import stopwords
+#from nltk.corpus import stopwords
 from sklearn.decomposition import TruncatedSVD
 import xgboost as xgb
 import pickle
